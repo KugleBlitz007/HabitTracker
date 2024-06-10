@@ -71,13 +71,19 @@ body {
     text-align: center;
     margin-bottom: 10px;
     }
+
+    .habit-level[contenteditable="true"] {
+        padding: 2px 5px;
+        border-radius: 3px;
+        outline: none;
+    }
     
     .progress-bars {
     display: grid;
     grid-template-columns: repeat(10, 1fr); /* Create 10 equal columns */
     gap: 5px;
-    width: 100%; / Ensure progress bars take full width /
-    box-sizing: border-box; / Ensure padding is included in width calculation */
+    width: 100%; /* Ensure progress bars take full width */
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
     }
     
     .progress-bar {

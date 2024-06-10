@@ -25,26 +25,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 bar.addEventListener('click', function() {
-                    if (!bar.classList.contains('clicked')) {
+                    if (bar.classList.contains('clicked')) {
+                        bar.classList.remove('clicked');
+                        progress -= 1;
+                    } else {
                         bar.classList.add('clicked');
                         progress += 1;
-                        habits[`progress-${index}`] = progress;
-                        if (progress === bars.length) {
-                            level += 1;
-                            progress = 0;
-                            bars.forEach(b => b.classList.remove('clicked'));
-                            habits[`progress-${index}`] = progress;
-                            habits[`level-${index}`] = level;
-                        }
-                        updateHabitLevel(habitLevel, level);
-                        saveProgress(habits);
                     }
+                    habits[`progress-${index}`] = progress;
+                    if (progress === bars.length) {
+                        level += 1;
+                        progress = 0;
+                        bars.forEach(b => b.classList.remove('clicked'));
+                        habits[`progress-${index}`] = progress;
+                        habits[`level-${index}`] = level;
+                    }
+                    updateHabitLevel(habitLevel, level);
+                    saveProgress(habits);
+                    
                 });
             });
 
             function updateHabitLevel(levelElement, level) {
                 levelElement.textContent = level;
             }
+
+            habitLevel.setAttribute('contenteditable', 'true');
+            habitLevel.addEventListener('blur', function() {
+                level = parseInt(habitLevel.textContent);
+                habits[`level-${index}`] = level;
+                saveProgress(habits);
+            });
 
             updateHabitLevel(habitLevel, level);
         });
