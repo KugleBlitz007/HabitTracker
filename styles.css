@@ -1,66 +1,94 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #000000;
+    background-color: #85bafe;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     height: 100vh;
-}
-
-p {
-    color: white;
+    flex-direction: column; /* Ensure all habit boxes are stacked vertically */
 }
 
 .stats-tracker {
-    position: relative;
-    width: 100%; /* Use percentage for responsiveness */
-    max-width: 100%; /* Limit max width for large screens */
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.stats-tracker img {
+    max-width: 100%;
     height: auto;
 }
 
-.tracker-background {
-    width: 100%;
-    height: auto;
+.habit-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 800px;
 }
 
-.habit {
-    position: absolute;
+.habit-box {
     display: flex;
     align-items: center;
-    width: 50%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    margin-bottom: 20px; /* Add space between habit boxes */
 }
 
-.habit-name {
-    flex: 1;
-    font-weight: bold;
-}
-
-.progress-bars {
+.image-box {
     display: flex;
-    gap: 6px;
-    flex: 4; /* Allow bars to take more space */
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
 }
 
-.progress-bar {
-    width: 10%; /* Use percentage for responsiveness */
-    height: 60px; /* Fixed height */
-    background-color: #808080;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.image-box img {
+    width: 100%;
+    border-radius: 10px;
+    height: auto;
 }
 
-.progress-bar.clicked {
-    background-color: #00ff08cc; /* Semi-transparent green overlay */
+.progress-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0; /* Prevent container from growing beyond its content */
 }
 
 .habit-level {
-    flex: 1;
-    font-size: 19px;
+    font-size: 24px;
     text-align: center;
-    color: white;
-}
-
-
+    margin-bottom: 10px;
+    }
+    
+    .progress-bars {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); /* Create 10 equal columns */
+    gap: 5px;
+    width: 100%; / Ensure progress bars take full width /
+    box-sizing: border-box; / Ensure padding is included in width calculation */
+    }
+    
+    .progress-bar {
+    height: 20px;
+    background-color: #d3d3d3;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    }
+    
+    .progress-bar.clicked {
+    background-color: #4caf50;
+    }
+    
