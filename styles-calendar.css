@@ -1,0 +1,174 @@
+/* Existing styles... */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #85bafe;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column; /* Ensure all habit boxes are stacked vertically */
+}
+
+/* New styles for top space and calendar wrapper */
+.top-space {
+    width: 100%;
+    height: 50px; /* Adjust height as needed for future button layout */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Space between the top space and calendar */
+}
+
+.calendar-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.calendar-container {
+    padding: 20px;
+    border-radius: 25px;
+    width: 90%;
+    max-width: 800px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+
+
+
+.calendar-button {
+    position: absolute;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    top: 30px; /* Adjust this value to position the button vertically */
+    right: 30px; /* Adjust this value to position the button horizontally */
+}
+
+.calendar-image {
+    width: 50px; /* Adjust the size as needed */
+    height: 50px; /* Adjust the size as needed */
+}
+
+.add-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.add-box img {
+    width: 50px;
+    height: 55px;
+}
+
+.habit-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 800px;
+}
+
+.habit-box, .time-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    margin-bottom: 20px; /* Add space between habit boxes */
+    transition: height 0.3s ease;
+    position: relative;
+}
+
+.time-box.expanded {
+    height: 100vh;
+    overflow: auto;
+}
+
+.details-box {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    width: 100%; /* Take the full width of the parent */
+    height: calc(100vh - 160px); /* Take up most of the height of the parent minus space for title and margins */
+    box-sizing: border-box;
+}
+
+.details-box.visible {
+    display: flex;
+}
+
+.details-input {
+    width: 100%;
+    flex: 1; /* Take up the remaining space */
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.details-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.details-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.details-buttons .close-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+.details-buttons .delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.highlight {
+    background-color: #ffeb3b; /* Yellow background */
+    box-shadow: 0 0 10px #ffeb3b; /* Glow effect */
+    border: 10px transparent #ffeb3b; /* Optional: border to enhance the highlight */
+}
+
+.activity {
+    flex: 2;
+    font-size: 24px;
+    text-align: center;
+}
+
+.time[contenteditable="true"], .activity[contenteditable="true"] {
+    padding: 2px 5px;
+    border-radius: 3px;
+    outline: none;
+}
+
+
+
+
