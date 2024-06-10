@@ -11,15 +11,43 @@ body {
 }
 
 .stats-tracker {
-    width: 50%;
+    width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
+    
 }
 
-.stats-tracker img {
-    max-width: 100%;
+.main-image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    max-width: 800px;
+}
+
+.main-image {
+    max-width: 100%; /* Adjust as needed */
     height: auto;
+}
+
+
+.calendar-button {
+    position: absolute;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    top: 30px; /* Adjust this value to position the button vertically */
+    right: 30px; /* Adjust this value to position the button horizontally */
+}
+
+.calendar-image {
+    width: 50px; /* Adjust the size as needed */
+    height: 50px; /* Adjust the size as needed */
 }
 
 .habit-container {
