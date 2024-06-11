@@ -145,6 +145,19 @@ body {
     outline: none;
 }
 
+.up-btn, .down-btn {
+    background-color: #2196F3; /* Blue */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px; /* Space between buttons */
+}
+
+.up-btn:hover, .down-btn:hover {
+    background-color: #0b7dda;
+}
 
 
 

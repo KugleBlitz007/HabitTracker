@@ -108,19 +108,39 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         saveProgress({ calendar }); // Save immediately after adding
+
+        // Scroll to the bottom of the container
+        newBox.scrollIntoView({ behavior: 'smooth', block: 'end' });
     });
 
     // Function to toggle expand/collapse of a time box
-    function toggleExpandTimeBox(timeBox, key) {
-        if (!timeBox.classList.contains('expanded')) {
-            timeBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            setTimeout(() => {
-                expandTimeBox(timeBox, key);
-            }, 500); // Delay to allow scrolling before expanding
-        } else {
-            collapseTimeBox(timeBox, key);
-        }
-    }
+function toggleExpandTimeBox(timeBox, key) {
+    if (!timeBox.classList.contains('expanded')) {
+        // Temporarily add a margin to the bottom of the page
+        document.body.style.marginBottom = '1000px';
+        
+        timeBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
+        setTimeout(() => {
+            expandTimeBox(timeBox, key);
+            // Remove the temporary margin
+            document.body.style.marginBottom = '';
+        }, ); // Delay to allow scrolling before expanding
+    } 
+}
+
+function updateCalendarOrder() {
+    const updatedCalendar = {};
+    const timeBoxes = timeBoxesContainer.querySelectorAll('.time-box');
+    timeBoxes.forEach((box, index) => {
+        const key = box.id;
+        updatedCalendar[key] = calendar[key];
+    });
+    calendar = updatedCalendar;
+    saveProgress({ calendar });
+}
+
+
 
     // Function to expand a time box
     function expandTimeBox(timeBox, key) {
@@ -153,10 +173,32 @@ document.addEventListener('DOMContentLoaded', function() {
             saveProgress({ calendar });
         });
 
+        const upButton = document.createElement('button');
+    upButton.classList.add('up-btn');
+    upButton.textContent = 'Up';
+    upButton.addEventListener('click', function() {
+        const prevSibling = timeBox.previousElementSibling;
+        if (prevSibling && prevSibling.classList.contains('time-box')) {
+            timeBoxesContainer.insertBefore(timeBox, prevSibling);
+        }
+    });
+
+    const downButton = document.createElement('button');
+    downButton.classList.add('down-btn');
+    downButton.textContent = 'Down';
+    downButton.addEventListener('click', function() {
+        const nextSibling = timeBox.nextElementSibling;
+        if (nextSibling && nextSibling.classList.contains('time-box')) {
+            timeBoxesContainer.insertBefore(nextSibling, timeBox);
+        }
+    });
+
         detailsButtons.appendChild(closeButton);
         detailsButtons.appendChild(deleteButton);
         detailsBox.appendChild(detailsInput);
         detailsBox.appendChild(detailsButtons);
+        detailsButtons.appendChild(upButton);
+        detailsButtons.appendChild(downButton);
         timeBox.appendChild(detailsBox);
 
         detailsInput.addEventListener('blur', function() {
@@ -169,7 +211,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function collapseTimeBox(timeBox, key) {
         timeBox.classList.remove('expanded');
         timeBox.querySelector('.details-box').remove();
+        document.body.style.paddingTop = '500px';
+        timeBox.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        document.body.style.paddingTop = '';
     }
+
 
     // Function to create a time box element
     function createTimeBox(key, timeText, activityText) {
