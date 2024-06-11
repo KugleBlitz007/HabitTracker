@@ -10,30 +10,6 @@ body {
     flex-direction: column; /* Ensure all habit boxes are stacked vertically */
 }
 
-/* New styles for top space and calendar wrapper */
-.top-space {
-    width: 100%;
-    height: 50px; /* Adjust height as needed for future button layout */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px; /* Space between the top space and calendar */
-}
-
-.calendar-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.calendar-container {
-    padding: 20px;
-    border-radius: 25px;
-    width: 90%;
-    max-width: 800px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-}
 
 .stats-tracker {
     width: 100%;
@@ -95,47 +71,6 @@ body {
     box-sizing: border-box; /* Ensure padding is included in width calculation */
     flex-wrap: wrap; /* Allow wrapping for smaller screens */
     margin-bottom: 20px; /* Add space between habit boxes */
-}
-
-.time {
-    flex: 1;
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    text-align: left;
-}
-
-/* Existing styles for time-box */
-.time-box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 25px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    width: 100%;
-    box-sizing: border-box;
-    flex-wrap: wrap;
-}
-
-.highlight {
-    background-color: #ffeb3b; /* Yellow background */
-    box-shadow: 0 0 10px #ffeb3b; /* Glow effect */
-    border: 10px transparent #ffeb3b; /* Optional: border to enhance the highlight */
-}
-
-.activity {
-    flex: 2;
-    font-size: 24px;
-    text-align: center;
-}
-
-.time[contenteditable="true"], .activity[contenteditable="true"] {
-    padding: 2px 5px;
-    border-radius: 3px;
-    outline: none;
 }
 
 .image-box {
