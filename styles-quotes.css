@@ -9,53 +9,47 @@ body {
     flex-direction: column; /* Ensure all boxes are stacked vertically */
 }
 
-.title-container {
+.top-space {
     width: 100%;
+    height: 50px; /* Adjust height as needed for future button layout */
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Space between the top space and content */
 }
 
-.title-image {
-    max-width: 100%; /* Adjust as needed */
-    height: auto;
-}
-
-.home-wrapper {
+.quotes-wrapper {
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
-.home-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.quotes-container {
+    padding: 20px;
+    border-radius: 25px;
     width: 90%;
     max-width: 800px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
-.home-box {
+.add-box {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     background-color: #fff;
     padding: 20px;
     border-radius: 25px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
     width: 100%;
-    box-sizing: border-box; /* Ensure padding is included in width calculation */
-    margin-bottom: 20px; /* Add space between boxes */
+    box-sizing: border-box;
     cursor: pointer;
-    position: relative;
-    transition: transform 0.3s ease;
 }
 
-.home-box:hover {
-    transform: scale(1.05);
+.add-box img {
+    width: 50px;
+    height: 55px;
 }
 
 .quote-box {
@@ -91,9 +85,32 @@ body {
     box-sizing: border-box;
 }
 
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    line-height: 1;
+}
+
 @media (max-width: 600px) {
-    .home-box,
     .quote-box {
         width: 100%; /* Full width for smaller screens */
+    }
+
+    .delete-btn {
+        width: 25px;
+        height: 25px;
+        font-size: 16px;
     }
 }
