@@ -86,8 +86,10 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
     width: 100%; /* Take the full width of the parent */
+    max-width: 600px; /* Set a maximum width */
     height: calc(100vh - 160px); /* Take up most of the height of the parent minus space for title and margins */
     box-sizing: border-box;
+    overflow-y: auto; /* Allow vertical scrolling if content is too large */
 }
 
 .details-box.visible {
@@ -102,6 +104,8 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+    font-size: 16px; /* Improve readability */
+    height: calc(100vh - 240px); /* Adjust height dynamically */
 }
 
 .details-buttons {
@@ -115,6 +119,8 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 10px; /* Space between buttons */
+    font-size: 16px; /* Improve readability */
 }
 
 .details-buttons .close-btn {
@@ -125,6 +131,38 @@ body {
 .details-buttons .delete-btn {
     background-color: #f44336;
     color: white;
+}
+
+.details-buttons .up-btn, .details-buttons .down-btn {
+    background-color: #2196F3; /* Blue */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.details-buttons .up-btn:hover, .details-buttons .down-btn:hover {
+    background-color: #0b7dda;
+}
+
+@media (max-width: 600px) {
+    .details-box {
+        max-width: 90%; /* Adjust width for smaller screens */
+        height: calc(100vh - 160px); /* Take up most of the height of the parent minus space for title and margins */
+        padding: 10px; /* Adjust padding */
+    }
+    
+    .details-input {
+        font-size: 14px; /* Adjust font size for smaller screens */
+        height: calc(100vh - 260px); /* Adjust height dynamically */
+    }
+
+    .details-buttons button {
+        padding: 5px 5px; /* Adjust button padding */
+        font-size: 12px; /* Adjust font size */
+        margin-left: 5px; /* Adjust margin between buttons */
+    }
 }
 
 .highlight {
