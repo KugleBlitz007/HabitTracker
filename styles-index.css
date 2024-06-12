@@ -72,7 +72,22 @@ body {
     position: relative;
 }
 
-.quote-text{
+.habit-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
+    margin-bottom: 20px; /* Add space between boxes */
+    position: relative;
+}
+
+.quote-text,
+.habit-text {
     width: 100%;
     text-align: center;
     font-size: 18px;
@@ -96,7 +111,8 @@ body {
     border: 10px transparent #ffeb3b;
 }
 
-.highlight-text {
+.highlight-text,
+.habit-level{
     width: 100%;
     text-align: center;
     font-size: 18px;
@@ -127,8 +143,9 @@ body {
 
 @media (max-width: 600px) {
     .home-box,
-    .quote-box 
-    .highlight-box{
+    .quote-box, 
+    .highlight-box,
+    .habit-box{
         width: 100%; /* Full width for smaller screens */
     }
 }

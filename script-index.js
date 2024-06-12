@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const API_KEY = '$2a$10$KMjxRh5ITdh/hqS4iCEsTeT1e3SZTCv/0LklzIhtct466BH.9j6DO'; // Replace with your JSONBin API Key
     const QUOTES_BIN_ID = '66688707e41b4d34e401df26'; // Replace with your JSONBin Bin ID for quotes
     const HIGHLIGHTS_BIN_ID = '666861d1ad19ca34f8778b21'; // Replace with your JSONBin Bin ID for highlights
+    const HABITS_BIN_ID = '66665824acd3cb34a855386b'; // Replace with your JSONBin Bin ID for habits
 
     function fetchQuotes() {
         return fetch(`https://api.jsonbin.io/v3/b/${QUOTES_BIN_ID}/latest`, {
@@ -26,10 +27,27 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => data.record.calendar);
     }
 
+    function fetchHabits() {
+        return fetch(`https://api.jsonbin.io/v3/b/${HABITS_BIN_ID}/latest`, {
+            method: 'GET',
+            headers: {
+                'X-Master-Key': API_KEY
+            }
+        })
+        .then(response => response.json())
+        .then(data => data.record.habits);
+    }
+
     function getRandomQuote(quotes) {
         const keys = Object.keys(quotes);
         const randomKey = keys[Math.floor(Math.random() * keys.length)];
         return quotes[randomKey];
+    }
+
+    function getRandomHabit(habits) {
+        const habitkeys = Object.keys(habits);
+        const randomKey = keys[Math.floor(Math.random() * keys.length)];
+        return habits[randomKey];
     }
 
     function displayRandomQuote() {
@@ -88,6 +106,27 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    
+    function displayRandomHabit() {
+        fetchHabits().then(habits => {
+            const habitBox = document.getElementById('habit-box');
+            const randomHabit = getRandomHabit(habits);
+            const habitProgress = randomHabit.progress;
+            const habitLevel = randomHabit.level;
+
+            habitBox.innerHTML = `
+            <div class="habit-level">Level: ${habitLevel}</div>
+            <div class="progress-bars">
+                ${Array(10).fill(0).map((_, i) => `
+                    <div class="progress-bar ${i < habitProgress ? 'filled' : ''}"></div>
+                `).join('')}
+            </div>
+        `;
+            habitBox.addEventListener('click', function() {
+                window.location.href = 'habit.html';
+            });
+        });
+    }
 
     function convertTimeToMinutes(time) {
         const [hour, minute] = time.split(':').map(Number);
@@ -99,6 +138,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Display the highlight
     displayHighlight();
+
+     // Display a random habit
+     displayRandomHabit();
 
     // Change the quote randomly every 10 seconds
     setInterval(displayRandomQuote, 10000);
