@@ -38,19 +38,6 @@ body {
 }
 
 
-.calendar-button {
-    position: absolute;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    top: 30px; /* Adjust this value to position the button vertically */
-    right: 30px; /* Adjust this value to position the button horizontally */
-}
-
-.calendar-image {
-    width: 50px; /* Adjust the size as needed */
-    height: 50px; /* Adjust the size as needed */
-}
-
 .habit-container {
     display: flex;
     flex-direction: column;

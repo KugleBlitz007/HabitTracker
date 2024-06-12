@@ -72,18 +72,43 @@ body {
     position: relative;
 }
 
-.habit-box {
+
+.habit-box .image-box {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.habit-box .image-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.habit-box .progress-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 25px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     width: 100%;
-    box-sizing: border-box; /* Ensure padding is included in width calculation */
-    margin-bottom: 20px; /* Add space between boxes */
-    position: relative;
+}
+
+.habit-box .progress-bars {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+    width: 100%;
+}
+
+.habit-box .progress-bar {
+    height: 20px;
+    background-color: #d3d3d3;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.habit-box .progress-bar.filled {
+    background-color: #4caf50;
 }
 
 .quote-text,
