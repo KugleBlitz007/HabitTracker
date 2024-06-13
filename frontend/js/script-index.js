@@ -1,41 +1,36 @@
 document.addEventListener('DOMContentLoaded', function() {
     const homeBoxes = document.querySelectorAll('.home-box');
-    const API_KEY = '$2a$10$KMjxRh5ITdh/hqS4iCEsTeT1e3SZTCv/0LklzIhtct466BH.9j6DO';
-    const QUOTES_BIN_ID = '66688707e41b4d34e401df26';
-    const HIGHLIGHTS_BIN_ID = '666861d1ad19ca34f8778b21';
-    const HABITS_BIN_ID = '66665824acd3cb34a855386b';
+    const BASE_URL = 'http://localhost:5001';
 
     function fetchQuotes() {
-        return fetch(`https://api.jsonbin.io/v3/b/${QUOTES_BIN_ID}/latest`, {
-            method: 'GET',
-            headers: {
-                'X-Master-Key': API_KEY
-            }
+        return fetch(`${BASE_URL}/quotes`, {
+            method: 'GET'
         })
         .then(response => response.json())
-        .then(data => data.record.quotes);
+        .then(data => data);
     }
 
     function fetchHighlight() {
-        return fetch(`https://api.jsonbin.io/v3/b/${HIGHLIGHTS_BIN_ID}/latest`, {
-            method: 'GET',
-            headers: {
-                'X-Master-Key': API_KEY
-            }
+        return fetch(`${BASE_URL}/timetable`, {
+            method: 'GET'
         })
         .then(response => response.json())
-        .then(data => data.record.calendar);
+        .then(data => data);
     }
 
     function fetchHabits() {
-        return fetch(`https://api.jsonbin.io/v3/b/${HABITS_BIN_ID}/latest`, {
-            method: 'GET',
-            headers: {
-                'X-Master-Key': API_KEY
-            }
+        return fetch(`${BASE_URL}/habits`, {
+            method: 'GET'
         })
         .then(response => response.json())
-        .then(data => data.record.habits);
+        .then(data => {
+            const habits = {};
+            data.forEach(item => {
+                habits[`progress-${item.id}`] = item.progress;
+                habits[`level-${item.id}`] = item.level;
+            });
+            return habits;
+        });
     }
 
     function getRandomQuote(quotes) {
@@ -74,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function displayHighlight() {
-        fetchHighlight().then(calendar => {
+        fetchHighlight().then(timetable => {
             const highlightBox = document.getElementById('highlight-box');
             let highlightText = 'No current highlights';
             let highlightTime = '';
@@ -83,10 +78,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const currentMinute = now.getMinutes();
             const currentTime = currentHour * 60 + currentMinute;
 
-            for (const key in calendar) {
-                if (calendar.hasOwnProperty(key)) {
-                    const timeText = calendar[key].time || '';
-                    const activityText = calendar[key].activity || '';
+            for (const key in timetable) {
+                if (timetable.hasOwnProperty(key)) {
+                    const timeText = timetable[key].time || '';
+                    const activityText = timetable[key].activity || '';
 
                     if (timeText && activityText) {
                         const [startTime, endTime] = timeText.split(' - ');
