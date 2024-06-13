@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const quotesContainer = document.querySelector('.quotes-container');
     const addBox = document.getElementById('add-box');
-    const BASE_URL = 'http://localhost:5001';
+    const BASE_URL = 'http://localhost:8080';
 
     let quotes = {};
 

@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const homeBoxes = document.querySelectorAll('.home-box');
-    const BASE_URL = 'http://localhost:5001';
+    const BASE_URL = 'http://localhost:8080';
 
     function fetchQuotes() {
         return fetch(`${BASE_URL}/quotes`, {

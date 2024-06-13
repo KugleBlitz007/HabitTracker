@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const { Pool } = require('pg');
 const path = require('path');
+require('dotenv').config();  // Add this line to load environment variables
 
 // Create an Express application
 const app = express();
@@ -14,11 +15,10 @@ app.use(cors());
 
 // Configure PostgreSQL client
 const pool = new Pool({
-  user: 'postgres',      // Your PostgreSQL username
-  host: 'LocalHost',     // Your PostgreSQL server address
-  database: 'habit-tracker-DB',  // Your PostgreSQL database name
-  password: '0000',  // Your PostgreSQL password
-  port: 5432,            // Default PostgreSQL port
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT, 
 });
 
 // Define routes for habits
@@ -135,5 +135,5 @@ app.get('/quotes', async (req, res) => {
 app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Start the server
-const PORT = process.env.PORT || 5001;  // Change the port to 5001
+const PORT = process.env.PORT || 8080;  // Change the port to 5001
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

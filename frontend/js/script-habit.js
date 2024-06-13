@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let habits = [];
   
     // Fetch data from backend
-    fetch('http://localhost:5001/habits')
+    fetch('http://localhost:8080/habits')
       .then(response => response.json())
       .then(data => {
         habits = data;
