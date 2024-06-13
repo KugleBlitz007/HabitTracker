@@ -2,7 +2,7 @@ for habit tracker bin :
 
 {
   "habits": {
-    "progress-0": 1,
+    "progress-0": 8,
     "level-0": 1,
     "progress-1": 1,
     "level-1": 0,
@@ -10,9 +10,9 @@ for habit tracker bin :
     "level-2": 0,
     "progress-3": 0,
     "level-3": 0,
-    "progress-4": 0,
+    "progress-4": 5,
     "level-4": 0,
-    "progress-5": 1,
+    "progress-5": 2,
     "level-5": 0
   }
 }
@@ -121,7 +121,27 @@ for timetable :
     },
     "box-46": {
       "time": "20:30 - 22:00",
-      "activity": "Free time reward and prepare for tomorow ; tidy house; go to bed"
+      "activity": "Free time reward and prepare for tomorrow ; tidy house; go to bed"
+    }
+  }
+}
+
+
+for quotes : 
+
+{
+  "quotes": {
+    "quote-2": {
+      "text": "\"Bisous\"",
+      "author": "Corrinthina"
+    },
+    "quote-3": {
+      "text": "\"Si tu veux manger le caca, mange le caca\"",
+      "author": "Corrinthina"
+    },
+    "quote-4": {
+      "text": "\"Il faut répondre aux message, et pas que dans la tête\"",
+      "author": "Corrinthina"
     }
   }
 }
