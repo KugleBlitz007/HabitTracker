@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let habits = [];
 
   // Fetch data from PHP backend
-  fetch('http://localhost:8888/get_habits.php')
+  fetch('http://localhost:8888/htdocs/get_habits.php')
     .then(response => response.json())
     .then(data => {
       habits = data;
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         function saveProgress(habit) {
-          fetch('http://localhost:8888/save_habit.php', {
+          fetch('http://localhost:8888/htdocs/save_habit.php', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Save progress to backend
   function saveProgress(habit) {
-    fetch('http://localhost:8888/save_habit.php', {
+    fetch('http://localhost:8888/htdocs/save_habit.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

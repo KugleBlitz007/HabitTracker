@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const homeBoxes = document.querySelectorAll('.home-box');
-    const BASE_URL = 'http://localhost:8888'; // Adjust if necessary
+    const BASE_URL = 'http://localhost:8888/htdocs'; // Adjust if necessary
 
     async function fetchData(endpoint) {
         try {
