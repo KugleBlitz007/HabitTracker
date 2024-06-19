@@ -1,0 +1,64 @@
+Create the tables :
+
+CREATE TABLE habits (
+    id SERIAL PRIMARY KEY,
+    progress INT,
+    level INT,
+    icon VARCHAR(255)
+);
+
+
+-- Create timetable table
+CREATE TABLE timetable (
+    id SERIAL PRIMARY KEY,
+    time VARCHAR(50),
+    activity TEXT,
+    details VARCHAR(500)
+);
+
+
+-- Create quotes table
+CREATE TABLE quotes (
+    id SERIAL PRIMARY KEY,
+    text TEXT,
+    author VARCHAR(100)
+);
+
+
+
+
+Insert data :
+
+INSERT INTO habits (progress, level,icon) VALUES (8, 1,'terminal');
+INSERT INTO habits (progress, level,icon) VALUES (1, 0,'dumbell.png');
+INSERT INTO habits (progress, level,icon) VALUES (0, 0,'camera.png');
+INSERT INTO habits (progress, level,icon) VALUES (0, 0,'charisma.png');
+INSERT INTO habits (progress, level,icon) VALUES (5, 0,'culture.png');
+INSERT INTO habits (progress, level,icon) VALUES (2, 0,'school.png');
+
+
+
+INSERT INTO timetable (time, activity, details) VALUES ('', 'New Activity', '');
+INSERT INTO timetable (time, activity, details) VALUES ('23:00 - 6:00', 'SLEEP', '');
+INSERT INTO timetable (time, activity, details) VALUES ('6:00 - 6:15', 'Wake up, toilets, brush teeth, drink', '');
+INSERT INTO timetable (time, activity, details) VALUES ('6:15 - 7:00', 'Breakfast, consulting daily plan', '');
+INSERT INTO timetable (time, activity, details) VALUES ('7:00 - 8:00', 'Workout', '');
+INSERT INTO timetable (time, activity, details) VALUES ('8:00 - 8:15', 'Shower, Skin care, Hair', '');
+INSERT INTO timetable (time, activity, details) VALUES ('8:15 - 9:10', 'General ONE THING knowledge', '');
+INSERT INTO timetable (time, activity, details) VALUES ('9:10 - 10:00', 'Explore possibilities (Trying)', '');
+INSERT INTO timetable (time, activity, details) VALUES ('10:00 - 11:30', 'Apply possibilities (Trying)', '');
+INSERT INTO timetable (time, activity, details) VALUES ('11:30 - 13:00', 'School not Thursday Camera Edit memory of a week', '');
+INSERT INTO timetable (time, activity, details) VALUES ('13:00 - 14:30', 'School only Thursday Friday; Lunch', '');
+INSERT INTO timetable (time, activity, details) VALUES ('14:30 - 16:00', 'School not Thursday Friday; Lunch', '');
+INSERT INTO timetable (time, activity, details) VALUES ('16:00 - 17:30', 'ONE THING continue', '');
+INSERT INTO timetable (time, activity, details) VALUES ('17:30 - 19:00', 'Finish ONE THING', '');
+INSERT INTO timetable (time, activity, details) VALUES ('19:00 - 20:30', 'Homework; School only Monday and Tuesday', '');
+INSERT INTO timetable (time, activity, details) VALUES ('20:30 - 22:00', 'Free time reward and prepare for tomorrow; tidy house; go to bed', '');
+
+
+
+
+INSERT INTO quotes (text, author) VALUES ('"Bisous"', 'Corrinthina');
+INSERT INTO quotes (text, author) VALUES ('"Si tu veux manger le caca, mange le caca"', 'Corrinthina');
+INSERT INTO quotes (text, author) VALUES ('"Il faut répondre aux message, et pas que dans la tête"', 'Corrinthina');
+

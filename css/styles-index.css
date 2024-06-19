@@ -1,0 +1,190 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #85bafe;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column; /* Ensure all boxes are stacked vertically */
+}
+
+.title-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title-image {
+    max-width: 100%; /* Adjust as needed */
+    height: auto;
+}
+
+.home-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 800px;
+}
+
+.home-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
+    margin-bottom: 20px; /* Add space between boxes */
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.home-box:hover {
+    transform: scale(1.05);
+}
+
+.quote-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
+    margin-bottom: 20px; /* Add space between boxes */
+    position: relative;
+}
+
+
+.habit-box .image-box {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.habit-box .image-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.habit-box .progress-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.habit-box .progress-bars {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+    width: 100%;
+}
+
+.habit-box .progress-bar {
+    height: 20px;
+    background-color: #d3d3d3;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.habit-box .progress-bar.filled {
+    background-color: #4caf50;
+}
+
+.quote-text,
+.habit-text {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.habit-box .habit-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.highlight-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffeb3b;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 0 10px #ffeb3b;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
+    margin-bottom: 20px; /* Add space between boxes */
+    position: relative;
+    border: 10px transparent #ffeb3b;
+}
+
+.highlight-text{
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.habit-level {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.highlight-time {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+.quote-author {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    font-style: italic;
+    margin-top: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+    .home-box,
+    .quote-box, 
+    .highlight-box,
+    .habit-box{
+        width: 100%; /* Full width for smaller screens */
+    }
+}
