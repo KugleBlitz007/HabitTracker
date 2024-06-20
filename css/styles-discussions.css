@@ -1,0 +1,153 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    height: 100vh;
+    background-color: #85bafe;
+    overflow-y: auto; /* Ensure the body is scrollable */
+}
+
+.top-space {
+    width: 100%;
+    height: 50px; /* Adjust height as needed for future button layout */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Space between the top space and content */
+}
+
+
+.container {
+    position: relative; /* Add this to position the check-button absolutely */
+    width: 90%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+
+.discussion-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    
+}
+
+.round-box {
+    width: 70px;
+    height: 70px;
+    background-color: #006ddc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: #ffffff;
+    margin-right: 20px;
+    overflow: hidden; /* Ensure the image fits within the round box */
+    cursor: pointer; /* Indicate that the round box is clickable */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow behind the round box */
+}
+
+.round-box img {
+    width: auto;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the entire round box */
+    border-radius: 50%; /* Ensure the image itself is round */
+    
+}
+
+.rectangle-box {
+    flex: 1;
+    min-height: 70px;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: #333;
+    border-radius: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow-wrap: normal;
+    word-wrap: normal;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.check-button {
+    position: absolute;
+    top: 0px; /* Adjust as needed */
+    right: 0px; /* Adjust as needed */
+    width: 40px; /* Size of the button */
+    height: 40px; /* Size of the button */
+    background-color: #4CAF50; /* Green color */
+    border-radius: 50%; /* Round shape */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+/* Modal styles */
+.modal {
+    
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    border-radius: 20px;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.image-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.selectable-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.selectable-image:hover {
+    border: 2px solid #4285f4;
+}

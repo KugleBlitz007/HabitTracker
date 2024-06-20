@@ -24,6 +24,13 @@ CREATE TABLE quotes (
     author VARCHAR(100)
 );
 
+-- Create discussions table
+CREATE TABLE discussions (
+    id SERIAL PRIMARY KEY,
+    text TEXT,
+    icons VARCHAR(100)
+);
+
 
 
 
@@ -61,4 +68,3 @@ INSERT INTO timetable (time, activity, details) VALUES ('20:30 - 22:00', 'Free t
 INSERT INTO quotes (text, author) VALUES ('"Bisous"', 'Corrinthina');
 INSERT INTO quotes (text, author) VALUES ('"Si tu veux manger le caca, mange le caca"', 'Corrinthina');
 INSERT INTO quotes (text, author) VALUES ('"Il faut répondre aux message, et pas que dans la tête"', 'Corrinthina');
-
