@@ -72,6 +72,21 @@ body {
     position: relative;
 }
 
+.discussion-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
 
 .habit-box .image-box {
     width: 60px;
@@ -187,4 +202,24 @@ body {
     .habit-box{
         width: 100%; /* Full width for smaller screens */
     }
+}
+
+/* Add these styles to ensure the image fits within the round box */
+.round-box {
+    width: 70px;
+    height: 70px;
+    background-color: #006ddc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensure the image fits within the round box */
+    margin-bottom: 10px; /* Add some space below the round box */
+}
+
+.round-box img {
+    width: auto;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the entire round box */
+    border-radius: 50%; /* Ensure the image itself is round */
 }

@@ -167,6 +167,44 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    async function fetchDiscussionById(id) {
+        try {
+            const response = await fetch(`${BASE_URL}/fetch_discussions.php?id=${id}`, { method: 'GET' });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const discussions = await response.json();
+            return discussions.length > 0 ? discussions[0] : null;
+        } catch (error) {
+            console.error(`Failed to fetch discussion with ID ${id}:`, error);
+            return null;
+        }
+    }
+
+    async function displayRandomDiscussion() {
+        const discussions = await fetchData('fetch_discussions.php');
+        if (discussions && discussions.length > 0) {
+            const randomDiscussionId = getRandomItem(discussions).id;
+            const randomDiscussion = await fetchDiscussionById(randomDiscussionId);
+            if (randomDiscussion && randomDiscussion.icons && randomDiscussion.text) {
+                const discussionBox = document.getElementById('discussion-box');
+                discussionBox.innerHTML = `
+                    <div class="round-box">
+                        <img src="${randomDiscussion.icons}" alt="Discussion Icon">
+                    </div>
+                    <div class="rectangle-box">${randomDiscussion.text}</div>
+                `;
+                discussionBox.addEventListener('click', () => {
+                    window.location.href = 'discussions.php';
+                });
+            } else {
+                console.error('Invalid discussion data:', randomDiscussion);
+            }
+        } else {
+            console.error('No discussions found or invalid data format.');
+        }
+    }
+
     function convertTimeToMinutes(time) {
         const [hour, minute] = time.split(':').map(Number);
         return hour * 60 + minute;
@@ -175,9 +213,11 @@ document.addEventListener('DOMContentLoaded', function() {
     displayRandomQuote();
     displayHighlight();
     displayRandomHabit();
+    displayRandomDiscussion();
 
     setInterval(displayRandomHabit, Math.floor(Math.random() * 5000) + 5000);
     setInterval(displayRandomQuote, 10000);
+    setInterval(displayRandomDiscussion, 10000); // Change discussion every 10 seconds
 
     homeBoxes.forEach((box, index) => {
         if (index > 0) { // Skip the first box
