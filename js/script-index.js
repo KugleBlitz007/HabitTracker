@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div class="habit-title">${habitTitles[habitIndex]}</div>
                 <div class="progress-container">
-                    <div class="habit-level" contenteditable="true">Level: ${randomHabit.level}</div>
+                    <div class="habit-level" contenteditable="false">Level: ${randomHabit.level}</div>
                     <div class="progress-bars">
                         ${Array(10).fill(0).map((_, i) => `
                             <div class="progress-bar ${i < randomHabit.progress ? 'filled' : ''}"></div>

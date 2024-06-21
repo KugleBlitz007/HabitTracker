@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr.send(`text=${encodeURIComponent(textBox.textContent)}&icon=${encodeURIComponent(roundBoxImg.src)}`);
     }
 
-    checkButton.addEventListener('click', createNewDiscussionBox);
+
 
     // Fetch and display existing discussions
     function fetchDiscussions() {
@@ -130,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     newCheckButton.addEventListener('click', function() {
                         // Send delete request to the server
                         const xhrDelete = new XMLHttpRequest();
-                        xhrDelete.open("POST", "delete_discussion.php", true);
                         xhrDelete.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                         xhrDelete.onreadystatechange = function() {
                             if (xhrDelete.readyState === XMLHttpRequest.DONE) {

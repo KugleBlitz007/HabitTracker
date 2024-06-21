@@ -84,41 +84,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }, 60000); // Check every 60000 ms (1 minute)
 
-   // Add new activity box
-   addBox.addEventListener('click', () => {
-    const newId = Object.keys(timetable).length + 1;
-        const newBox = createTimeBox(newId, 'New Time', 'New Activity', '');
-    timeBoxesContainer.appendChild(newBox);
-
-    const newActivity = {
-        id: newId,
-        time: 'New Time',
-        activity: 'New Activity',
-        details: ''
-    };
-
-    // Add new activity to the timetable object
-    timetable[newId] = newActivity;
-
-    // Save new activity to the backend
-    fetch(`${BASE_URL}/add_activity.php`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newActivity)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('New activity added:', data);
-    })
-    .catch(error => {
-        console.error('Error adding new activity:', error);
-    });
-
-    // Scroll to the bottom of the container
-    newBox.scrollIntoView({ behavior: 'smooth', block: 'end' });
-});
 
 
     // Function to toggle expand/collapse of a time box
@@ -173,27 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const deleteButton = document.createElement('button');
         deleteButton.classList.add('delete-btn');
         deleteButton.textContent = 'Delete';
-        deleteButton.addEventListener('click', function() {
-            timeBox.remove();
-            delete timetable[key];
-            saveProgress(timetable);
 
-            // Remove the activity from the backend
-            fetch(`${BASE_URL}/delete_activity.php`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ id: key })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Activity deleted:', data);
-            })
-            .catch(error => {
-                console.error('Error deleting activity:', error);
-            });
-        });
 
         const upButton = document.createElement('button');
         upButton.classList.add('up-btn');
@@ -251,12 +196,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const timeElement = document.createElement('div');
         timeElement.classList.add('time');
-        timeElement.contentEditable = true;
+        timeElement.contentEditable = false;
         timeElement.textContent = timeText;
 
         const activityElement = document.createElement('div');
         activityElement.classList.add('activity');
-        activityElement.contentEditable = true;
+        activityElement.contentEditable = false;
         activityElement.textContent = activityText;
 
         timeBox.appendChild(timeElement);
@@ -289,12 +234,5 @@ document.addEventListener('DOMContentLoaded', function() {
         return timeBox;
     }
 
-    
-    // Function to swap timetable entries
-    function swapTimetableEntries(id1, id2) {
-        const temp = timetable[id1];
-        timetable[id1] = timetable[id2];
-        timetable[id2] = temp;
-        saveProgress(timetable);
-    }
+
 });

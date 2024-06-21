@@ -177,7 +177,7 @@ body {
     text-align: center;
 }
 
-.time[contenteditable="true"], .activity[contenteditable="true"] {
+.time[contenteditable="false"], .activity[contenteditable="false"] {
     padding: 2px 5px;
     border-radius: 3px;
     outline: none;

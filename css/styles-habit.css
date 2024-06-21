@@ -84,7 +84,7 @@ body {
     margin-bottom: 10px;
 }
 
-.habit-level[contenteditable="true"] {
+.habit-level[contenteditable="false"] {
     padding: 2px 5px;
     border-radius: 3px;
     outline: none;

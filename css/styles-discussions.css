@@ -64,7 +64,7 @@ body {
 .rectangle-box {
     flex: 1;
     min-height: 70px;
-    background-color: #e0e0e0;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
