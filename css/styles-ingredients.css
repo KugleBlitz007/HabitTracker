@@ -1,0 +1,213 @@
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh; /* Full viewport height */
+    background-color: #85bafe;
+    overflow-y: auto; /* Scrollable if content overflows */
+    max-width: 800px; /* Maximum width of the container */
+    margin: 10px auto; /* Center the body horizontally */
+
+    
+}
+
+.top-space {
+    width: 100%;
+    height: 0px; /* Adjust height as needed for future button layout */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Space between the top space and content */
+}
+
+
+.container {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+
+    justify-content: center;    
+}
+
+
+.round-box {
+    width: 70px;
+    height: 70px;
+    background-color: #006ddc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    overflow: hidden; /* Ensure the image fits within the round box */
+    cursor: pointer; /* Indicate that the round box is clickable */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow behind the round box */
+    
+}
+
+.round-box img {
+    width: auto;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the entire round box */
+    border-radius: 50%; /* Ensure the image itself is round */
+    
+}
+
+
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Responsive width */
+    max-width: 600px; /* Maximum width */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px; /* Rounded corners */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="file"] {
+    width: 100%; /* Full width */
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and border in the element's width */
+}
+
+button[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+
+.output-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers children horizontally */
+    justify-content: flex-start; /* Aligns children to the top */
+    width: 50%; /* Adjust width to match habit page */
+    max-width: 800px; /* Maximum width of the container */
+    margin: 20px auto; /* Top and bottom margin, auto for horizontal centering */
+}
+
+.ingredient-item {
+    display: flex;
+    margin-bottom: 20px; /* Space between items */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 25px; /* Rounded corners like habit boxes */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    box-sizing: border-box; /* Include padding in width calculation */
+    align-items: center; /* Align children vertically in the center */
+    justify-content: center; /* Center children horizontally */
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.ingredient-image-container {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* Circular image container */
+    overflow: hidden;
+    margin-right: 20px; /* Space between image and text */
+}
+
+.ingredient-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ingredient-text-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ingredient-name {
+    font-weight: bold;
+}
+
+.ingredient-quantity {
+    color: #666;
+}
+
+/* Edit Modal styles */
+#edit-ingredient-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 20; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+    transition: opacity 0.3s ease-in-out;
+}
+
+#edit-ingredient-modal .modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Responsive width */
+    max-width: 600px; /* Maximum width */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px; /* Rounded corners */
+}
+
+#edit-icon {
+    max-width: 100%;  /* Ensure the image does not exceed the width of its container */
+    max-height: 200px; /* Set a maximum height for the image */
+    object-fit: contain; /* This makes the image scale to fit the content box, while maintaining its aspect ratio */
+    display: block; /* Ensures the image is treated as a block-level element, centering it if needed */
+    margin: 0 auto; /* Centers the image horizontally within its container */
+}
