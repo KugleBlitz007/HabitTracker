@@ -43,7 +43,7 @@ include 'db_config.php';
     <!-- Edit Ingredient Modal -->
     <div id="edit-ingredient-modal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span class="close edit-close">&times;</span> <!-- Add a unique class -->
             <form id="edit-ingredient-form">
                 <label for="edit-name">Name:</label>
                 <input type="text" id="edit-name" name="name">

@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const editExpiryDate = document.getElementById('edit-expiry-date');
             const editLocation = document.getElementById('edit-location');
             const editIcon = document.getElementById('edit-icon');
+            const editForm = document.getElementById('edit-ingredient-form');
 
             console.log({editName, editType, editQuantity, editExpiryDate, editLocation, editIcon}); // Log to see which is null
 
@@ -63,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 editExpiryDate.value = ingredient.expiry_date;
                 editLocation.value = ingredient.location;
                 editIcon.src = `images/ingredients/${ingredient.icons}`;
+                editForm.dataset.id = ingredient.id; // Store the ingredient ID in the form's dataset
                 document.getElementById('edit-ingredient-modal').style.display = 'block';
             } else {
                 console.error('One or more elements are missing in the modal form.');
@@ -134,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Close edit modal when clicking the close button
-    const editModalCloseButton = document.querySelector('.close');
+    const editModalCloseButton = document.querySelector('#edit-ingredient-modal .close.edit-close');
     editModalCloseButton.addEventListener('click', function() {
         const editModal = document.getElementById('edit-ingredient-modal');
         editModal.style.display = 'none';
@@ -146,6 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();  // Prevent the default form submission
 
         const formData = new FormData(this);  // Gather form data
+        formData.append('id', this.dataset.id); // Append the ingredient ID to the form data
 
         // Perform the AJAX request
         fetch('save_ingredients.php', {
@@ -159,6 +162,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Ingredient updated successfully!');
                 // Optionally close the modal here
                 document.getElementById('edit-ingredient-modal').style.display = 'none';
+                // Optionally refresh the ingredients list here
+                fetchIngredients();
             } else {
                 alert('Failed to update ingredient: ' + data.message);
             }
@@ -166,5 +171,38 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             console.error('Error:', error);
         });
+    });
+
+    // Handle delete button click
+    const deleteButton = document.getElementById('delete-ingredient');
+    deleteButton.addEventListener('click', function() {
+        const ingredientId = editForm.dataset.id;
+
+        if (confirm('Are you sure you want to delete this ingredient?')) {
+            // Perform the AJAX request to delete the ingredient
+            fetch('delete_ingredient.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `id=${ingredientId}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);  // Log the response from the server
+                if (data.status === 'success') {
+                    alert('Ingredient deleted successfully!');
+                    // Optionally close the modal here
+                    document.getElementById('edit-ingredient-modal').style.display = 'none';
+                    // Optionally refresh the ingredients list here
+                    fetchIngredients();
+                } else {
+                    alert('Failed to delete ingredient: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
     });
 });

@@ -226,4 +226,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+
+    // Add event listener to box 5 to navigate to ingredients.php
+    const box5 = document.getElementById('box-5');
+    box5.addEventListener('click', () => {
+        window.location.href = 'ingredients.php';
+    });
 });
