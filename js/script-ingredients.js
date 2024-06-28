@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const roundBox = document.getElementById('round-box');
     const addIngredientModal = document.getElementById('add-ingredient-modal');
     const closeModal = document.querySelector('.close');
+    const outputContainer = document.getElementById('output-container');
 
     // Event listener to open the modal
     roundBox.addEventListener('click', function() {
@@ -26,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const checkButton = document.getElementById('check-button');
     const modal = document.getElementById('image-modal');
     const selectableImages = document.querySelectorAll('.selectable-image');
-    const outputContainer = document.getElementById('output-container');
 
     window.addEventListener('click', function(event) {
         if (event.target == modal) {
@@ -81,43 +81,55 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 const ingredients = JSON.parse(xhr.responseText);
-                ingredients.forEach(ingredient => {
-                    const ingredientElement = document.createElement('div');
-                    ingredientElement.className = 'ingredient-item';
-
-                    const imageContainer = document.createElement('div');
-                    imageContainer.className = 'ingredient-image-container';
-                    const image = document.createElement('img');
-                    image.src = `images/ingredients/${ingredient.icons}`;
-                    image.alt = `${ingredient.name}`;
-                    image.className = 'ingredient-image';
-                    imageContainer.appendChild(image);
-
-                    const textContainer = document.createElement('div');
-                    textContainer.className = 'ingredient-text-container';
-                    textContainer.innerHTML = `
-                        <div class="ingredient-name">${ingredient.name}</div>
-                        <div class="ingredient-quantity">${ingredient.quantity}</div>
-                    `;
-
-                    ingredientElement.appendChild(imageContainer);
-                    ingredientElement.appendChild(textContainer);
-
-                    // Add event listener to open edit modal
-                    ingredientElement.addEventListener('click', function() {
-                        openEditModal(ingredient);
-                    });
-
-                    document.getElementById('output-container').appendChild(ingredientElement);
-                });
+                displayIngredients(ingredients);
             }
         };
         xhr.send();
     }
 
-    fetchIngredients();
+    function displayIngredients(ingredients) {
+        outputContainer.innerHTML = ''; // Clear existing content
+        ingredients.forEach(ingredient => {
+            const ingredientElement = document.createElement('div');
+            ingredientElement.className = 'ingredient-item';
 
-    // Handle form submission
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'ingredient-image-container';
+            const image = document.createElement('img');
+            image.src = `images/ingredients/${ingredient.icons}`;
+            image.alt = `${ingredient.name}`;
+            image.className = 'ingredient-image';
+            imageContainer.appendChild(image);
+
+            const textContainer = document.createElement('div');
+            textContainer.className = 'ingredient-text-container';
+            textContainer.innerHTML = `
+                <div class="ingredient-name">${ingredient.name}</div>
+                <div class="ingredient-quantity">${ingredient.quantity}</div>
+            `;
+
+            ingredientElement.appendChild(imageContainer);
+            ingredientElement.appendChild(textContainer);
+
+            // Add event listener to open edit modal or select ingredient
+            ingredientElement.addEventListener('click', function() {
+                if (selecting) {
+                    this.classList.toggle('selected');
+                    if (this.classList.contains('selected')) {
+                        selectedIngredients.push(ingredient);
+                    } else {
+                        selectedIngredients = selectedIngredients.filter(item => item.id !== ingredient.id);
+                    }
+                } else {
+                    openEditModal(ingredient);
+                }
+            });
+
+            outputContainer.appendChild(ingredientElement);
+        });
+    }
+
+    // Handle form submission for adding a new ingredient
     document.getElementById('ingredient-form').addEventListener('submit', function(event) {
         event.preventDefault();
         const formData = new FormData(this);
@@ -127,6 +139,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     console.log("Response:", xhr.responseText);
+                    addIngredientModal.style.display = 'none'; // Close the modal
+                    fetchIngredients(); // Refresh the ingredients list
                 } else {
                     console.error("Failed with status:", xhr.status, "Response:", xhr.responseText);
                 }
@@ -160,10 +174,8 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(data);  // Log the response from the server
             if (data.status === 'success') {
                 alert('Ingredient updated successfully!');
-                // Optionally close the modal here
-                document.getElementById('edit-ingredient-modal').style.display = 'none';
-                // Optionally refresh the ingredients list here
-                fetchIngredients();
+                document.getElementById('edit-ingredient-modal').style.display = 'none'; // Close the modal
+                fetchIngredients(); // Refresh the ingredients list
             } else {
                 alert('Failed to update ingredient: ' + data.message);
             }
@@ -192,10 +204,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log(data);  // Log the response from the server
                 if (data.status === 'success') {
                     alert('Ingredient deleted successfully!');
-                    // Optionally close the modal here
-                    document.getElementById('edit-ingredient-modal').style.display = 'none';
-                    // Optionally refresh the ingredients list here
-                    fetchIngredients();
+                    document.getElementById('edit-ingredient-modal').style.display = 'none'; // Close the modal
+                    fetchIngredients(); // Refresh the ingredients list
                 } else {
                     alert('Failed to delete ingredient: ' + data.message);
                 }
@@ -204,5 +214,107 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error:', error);
             });
         }
+    });
+
+    // Filter ingredients based on location
+    function filterIngredients(location) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "fetch_ingredients.php", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                const ingredients = JSON.parse(xhr.responseText);
+                const filteredIngredients = ingredients.filter(ingredient => {
+                    if (location === 'home') {
+                        return ingredient.location !== 'Store' && ingredient.location !== 'List';
+                    }
+                    return ingredient.location === location;
+                });
+                displayIngredients(filteredIngredients);
+            }
+        };
+        xhr.send();
+    }
+
+    // Event listeners for navigation buttons
+    const navButtons = document.querySelectorAll('.nav-bar button');
+    navButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove 'active' class from all buttons
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            // Add 'active' class to the clicked button
+            this.classList.add('active');
+
+            // Filter ingredients based on the button clicked
+            if (this.id === 'home-button') {
+                filterIngredients('home');
+            } else if (this.id === 'store-button') {
+                filterIngredients('Store');
+            } else if (this.id === 'list-button') {
+                filterIngredients('List');
+            } else if (this.id === 'recipe-button') {
+                // No action for now
+            }
+        });
+    });
+
+    // Set the initial active button and filter ingredients to 'home'
+    document.getElementById('home-button').classList.add('active');
+    filterIngredients('home');
+
+    const selectButton = document.getElementById('select-button');
+    const cancelButton = document.getElementById('cancel-button');
+    const moveIngredientsModal = document.getElementById('move-ingredients-modal');
+    const moveCloseButton = document.querySelector('.move-close');
+    let selecting = false;
+    let selectedIngredients = [];
+
+    selectButton.addEventListener('click', function() {
+        selecting = !selecting;
+        if (selecting) {
+            selectButton.textContent = 'Move To';
+            cancelButton.style.display = 'inline-block';
+        } else {
+            moveIngredientsModal.style.display = 'block';
+        }
+    });
+
+    cancelButton.addEventListener('click', function() {
+        selecting = false;
+        selectButton.textContent = 'Select';
+        cancelButton.style.display = 'none';
+        selectedIngredients = [];
+        document.querySelectorAll('.ingredient-item.selected').forEach(item => item.classList.remove('selected'));
+    });
+
+    moveCloseButton.addEventListener('click', function() {
+        moveIngredientsModal.style.display = 'none';
+    });
+
+    document.querySelectorAll('.move-to').forEach(button => {
+        button.addEventListener('click', function() {
+            const newLocation = this.dataset.location;
+            const ids = selectedIngredients.map(ingredient => ingredient.id);
+
+            fetch('save_ingredients.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `bulk_update=true&ids=${JSON.stringify(ids)}&new_location=${newLocation}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('Ingredients moved successfully!');
+                    moveIngredientsModal.style.display = 'none';
+                    fetchIngredients(); // Refresh the ingredients list
+                } else {
+                    alert('Failed to move ingredients: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
     });
 });

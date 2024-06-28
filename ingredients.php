@@ -12,13 +12,21 @@ include 'db_config.php';
     <link rel="stylesheet" href="css/styles-ingredients.css?v=1.0"> <!-- Add a version query string -->
 </head>
 <body>
-<div class="top-space">
-        <!-- Future button layout can be added here -->
+    <div class="top-space">
+       
     </div>
     <div class="container">
-        <div id="round-box" class="round-box">
+    <div id="round-box" class="round-box">
             <img id="round-box-img" src="images/add-icon.png" alt="Add Ingredient">
         </div>
+        <div id="select-box" class="round-box">
+            <span id="select-button">Select</span>
+        </div>
+        
+        <button id="cancel-button" style="display: none;">Cancel</button>
+    
+        </div>
+        
        
     </div>
     
@@ -38,7 +46,9 @@ include 'db_config.php';
         </div>
     </div>
     
-    <div id="output-container"></div> <!-- Container for displaying ingredients -->
+    <div id="output-container" style="
+    padding-bottom: 60px;
+"></div> <!-- Container for displaying ingredients -->
     
     <!-- Edit Ingredient Modal -->
     <div id="edit-ingredient-modal" class="modal">
@@ -74,6 +84,26 @@ include 'db_config.php';
             <span class="close">&times;</span>
             <!-- Modal content goes here -->
         </div>
+    </div>
+    
+    <!-- Move Ingredients Modal -->
+    <div id="move-ingredients-modal" class="modal">
+        <div class="modal-content">
+            <span class="close move-close">&times;</span>
+            <h2>Move Ingredients</h2>
+            <button class="move-to" data-location="Fridge">Fridge</button>
+            <button class="move-to" data-location="Store">Store</button>
+            <button class="move-to" data-location="List">List</button>
+            <button class="move-to" data-location="Pantry">Pantry</button>
+        </div>
+    </div>
+    
+    <!-- Navigation bar -->
+    <div class="nav-bar">
+        <button id="home-button" class="active">Home</button>
+        <button id="store-button">Store</button>
+        <button id="list-button">List</button>
+        <button id="recipe-button">Recipe</button>
     </div>
     
     <script src="js/script-ingredients.js"></script>

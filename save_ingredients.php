@@ -2,6 +2,26 @@
 include 'db_config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Handle bulk update for ingredient locations
+    if (isset($_POST['bulk_update']) && $_POST['bulk_update'] == 'true') {
+        $ids = json_decode($_POST['ids'], true); // Decode the JSON array of IDs
+        $new_location = $_POST['new_location'];
+        $id_placeholders = implode(',', array_fill(0, count($ids), '?'));
+        $stmt = $conn->prepare("UPDATE ingredients SET location=? WHERE id IN ($id_placeholders)");
+        $types = str_repeat('i', count($ids));
+        $stmt->bind_param("s" . $types, $new_location, ...$ids);
+
+        if ($stmt->execute()) {
+            echo json_encode(["status" => "success"]);
+        } else {
+            echo json_encode(["status" => "error", "message" => $stmt->error]);
+        }
+
+        $stmt->close();
+        $conn->close();
+        exit;
+    }
+
     $name = $_POST['name'];
     $type = $_POST['type'];
     $quantity = $_POST['quantity'];
