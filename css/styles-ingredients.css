@@ -127,12 +127,11 @@ body  {
 
 .modal-content {
     font-size: 16px;
-    color: #000;
+    color: #bebebe;
     position: relative;
-    background-color: #fefefe;
+    background-color: rgba(10, 7, 56, 0.8); /* Use rgba for background color with opacity */
     margin: 10% auto; /* 10% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
     width: 80%; /* Responsive width */
     max-width: 600px; /* Maximum width */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -167,7 +166,7 @@ input[type="file"] {
 
 button[type="submit"] {
     width: 100%;
-    background-color: #4CAF50;
+    background-color: #030a96;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -177,7 +176,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #5f93fd;
 }
 
 .output-container {
@@ -208,7 +207,7 @@ button[type="submit"]:hover {
 }
 
 .ingredient-item.selected {
-    background-color: #d4edda; /* Light green background for selected items */
+    background-color: rgba(81, 142, 255, 0.6); /* Use rgba for background color with opacity */
     border-color: #c3e6cb; /* Green border for selected items */
 }
 
@@ -288,7 +287,7 @@ button[type="submit"]:hover {
 
 .move-to {
     width: 100%;
-    background-color: #4CAF50;
+    background-color: rgba(75, 143, 238, 0.6); /* Use rgba for background color with opacity */
     color: white;
     padding: 14px 20px;
     margin: 8px 0;

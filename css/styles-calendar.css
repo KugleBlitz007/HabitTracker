@@ -1,7 +1,6 @@
 /* Existing styles... */
 body {
     font-family: Arial, sans-serif;
-    background-color: #85bafe;
     margin: 0;
     padding: 0;
     display: flex;
@@ -39,7 +38,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
+    background-color: rgba(10, 7, 56, 0.6); /* Use rgba for background color with opacity */
     padding: 20px;
     border-radius: 25px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -59,7 +58,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #fff;
+    background-color: rgba(10, 7, 56, 0.6); /* Use rgba for background color with opacity */
     padding: 20px;
     border-radius: 25px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -81,7 +80,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: rgba(15, 10, 76); /* Use rgba for background color with opacity */
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
@@ -102,6 +101,7 @@ body {
     margin-bottom: 20px;
     padding: 10px;
     border: 1px solid #ccc;
+    background-color: rgba(15, 10, 76, 0.1); /* Use rgba for background color with opacity */
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 16px; /* Improve readability */
@@ -156,6 +156,7 @@ body {
     .details-input {
         font-size: 14px; /* Adjust font size for smaller screens */
         height: calc(100vh - 260px); /* Adjust height dynamically */
+        color: #bebebe;
     }
 
     .details-buttons button {
@@ -166,21 +167,26 @@ body {
 }
 
 .highlight {
-    background-color: #ffeb3b; /* Yellow background */
-    box-shadow: 0 0 10px #ffeb3b; /* Glow effect */
+    background-color: rgba(255, 235, 59); /* Use rgba for background color with opacity */
+    box-shadow: 0 0 10px rgb(255, 235, 59); /* Glow effect */
     border: 10px transparent #ffeb3b; /* Optional: border to enhance the highlight */
+    color: #161616;
 }
 
 .activity {
     flex: 2;
-    font-size: 24px;
+    font-size: 16px;
     text-align: center;
+    color: #545252;
+    font-weight: bold;
 }
 
 .time[contenteditable="true"], .activity[contenteditable="true"] {
     padding: 2px 5px;
     border-radius: 3px;
     outline: none;
+    color: #545252;
+    font-size: 24px;
 }
 
 .up-btn, .down-btn {
