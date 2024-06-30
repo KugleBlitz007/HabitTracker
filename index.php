@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="icon" href="/images/sun.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/styles-index.css">
 </head>
 <body>
     <div class="title-container">
-        <img src="images/title-image.png" alt="Title Image" class="title-image">
+        <img src="images/title-image.gif" alt="Title Image" class="title-image">
     </div>
 
     <div class="home-wrapper">

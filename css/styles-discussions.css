@@ -1,12 +1,13 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
+    margin: 10px auto; /* Center the body horizontally */
     padding: 0;
     display: flex;
     flex-direction: column; /* Stack items vertically */
     height: 100vh;
-    background-color: #85bafe;
     overflow-y: auto; /* Ensure the body is scrollable */
+    max-width: 800px; /* Maximum width of the container */
+
 }
 
 .top-space {
@@ -50,7 +51,7 @@ body {
     margin-right: 20px;
     overflow: hidden; /* Ensure the image fits within the round box */
     cursor: pointer; /* Indicate that the round box is clickable */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow behind the round box */
+    box-shadow: 0px 0px 15px #006ddc,0px 0px 15px #006ddc; /* Add shadow behind the round box */
 }
 
 .round-box img {
@@ -64,18 +65,17 @@ body {
 .rectangle-box {
     flex: 1;
     min-height: 70px;
-    background-color: #e0e0e0;
+    background-color: rgba(10, 7, 56, 0.55); /* Use rgba for background color with opacity */
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 18px;
-    color: #333;
+    color: #dcdbdb;
     border-radius: 20px;
     padding: 10px;
     box-sizing: border-box;
     overflow-wrap: normal;
     word-wrap: normal;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
 }
 
@@ -86,14 +86,13 @@ body {
     width: 40px; /* Size of the button */
     height: 40px; /* Size of the button */
     background-color: #4CAF50; /* Green color */
+    box-shadow: 0px 0px 10px #4CAF50,0px 0px 10px #4CAF50; /* Add shadow behind the round box */
     border-radius: 50%; /* Round shape */
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-
 }
 
 /* Modal styles */

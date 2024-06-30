@@ -10,7 +10,7 @@
 <body>
     <div class="stats-tracker">
         <div class="main-image-container">
-            <img src="images/StatTracker_main.png" alt="Stat Tracker" class="main-image">
+            <img src="images/StatTracker_main.gif" alt="Stat Tracker" class="main-image">
         </div>
     </div>
     <div class="habit-container">
