@@ -76,6 +76,7 @@ body {
     box-sizing: border-box;
     overflow-wrap: normal;
     word-wrap: normal;
+    max-width: 800px;
 
 }
 
@@ -93,6 +94,7 @@ body {
     align-items: center;
     color: white;
     cursor: pointer;
+    max-width: 800px;
 }
 
 /* Modal styles */

@@ -23,7 +23,7 @@
             <div class="home-box habit-box" id="habit-box"></div>
             <div class="home-box discussion-box" id="discussion-box"></div>
             <div class="home-box" id="box-5">Go to the Ingredients Page</div>
-            <div class="home-box" id="box-6"></div>
+            <div class="home-box" id="box-6">Go to Habits calendar</div>
             <div class="home-box" id="box-7"></div>
         </div>
     </div>

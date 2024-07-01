@@ -1,0 +1,96 @@
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #c9d1d9;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Prevent vertical overflow */
+    overflow-y: auto; /* Ensure the body is scrollable */
+
+}
+
+.calendar-container {
+    height: 210px; /* Set a fixed height */
+    width: 85%;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    padding: 20px;
+    background-color: rgba(10, 7, 56, 0.55); /* Use rgba for background color with opacity */
+    border-radius: 20px;
+justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.calendar-container::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}
+
+.calendar {
+    display: grid;
+    grid-template-rows: repeat(7, 20px);
+    grid-auto-flow: column;
+    gap: 5px;
+}
+
+.day {
+    width: 20px;
+    height: 20px;
+    background-color: rgba(109, 109, 109, 0.55); /* Use rgba for background color with opacity */
+    cursor: pointer;
+    position: relative;
+    border-radius: 20%;
+}
+
+.day.progress-1 {
+    background-color: #ffa600;
+}
+
+.day.progress-2 {
+    background-color: #eeff00;
+}
+
+.day.progress-3 {
+    background-color: #7af265;
+}
+
+.day.progress-4 {
+    background-color: #049c20;
+}
+
+.day.today {
+    border: 3px solid #f57230; /* Thick border for today's date */
+    box-sizing: border-box; /* Ensure the border is included in the element's dimensions */
+}
+
+
+.tooltip {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 10;
+}
+.month-header {
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.day-header {
+    color: #ffffff;
+    font-size: 12px;
+    text-align: left;
+    margin-right: 5px;
+}
