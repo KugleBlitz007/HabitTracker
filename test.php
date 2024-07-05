@@ -17,11 +17,8 @@
     <div class="calendar-container">
         <div class="calendar">
         <div class='day-header' style='grid-row: 2;'>Mon</div>
-        <div class='day-header' style='grid-row: 3;'>Tue</div>
                 <div class='day-header' style='grid-row: 4;'>Wed</div>
-                <div class='day-header' style='grid-row: 5;'>Thu</div>
                 <div class='day-header' style='grid-row: 6;'>Fri</div>
-                <div class='day-header' style='grid-row: 7;'>Sat</div>
                 <div class='day-header' style='grid-row: 8;'>Sun</div>
 
             <div class='month-header' style='grid-column: 2 / span 4; text-align: left;grid-row: 1;'>Jan</div>

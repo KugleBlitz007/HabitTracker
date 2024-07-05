@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="title-container">
-        <img src="images/title-image-bluey.gif" alt="Title Image" class="title-image">
+        <img src="images/title-image.gif" alt="Title Image" class="title-image">
     </div>
 
     <div class="home-wrapper">
