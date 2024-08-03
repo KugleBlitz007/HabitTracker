@@ -34,6 +34,14 @@ include 'db_config.php';
                 <img src="images/icons/Johann.jpg" alt="Image 1" class="selectable-image">
                 <img src="images/icons/Ticia.jpg" alt="Image 2" class="selectable-image">
                 <img src="images/icons/Titinana.jpg" alt="Image 3" class="selectable-image">
+                <img src="images/icons/Pierre.jpg" alt="Image 4" class="selectable-image">
+                <img src="images/icons/Papa.jpg" alt="Image 5" class="selectable-image">
+                <img src="images/icons/Maman.jpg" alt="Image 6" class="selectable-image">
+                <img src="images/icons/Jaylan.jpg" alt="Image 7" class="selectable-image">
+                <img src="images/icons/Nanne.jpg" alt="Image 8" class="selectable-image">
+                <img src="images/icons/Bill.jpg" alt="Image 9" class="selectable-image">
+                <img src="images/icons/Jamila.jpg" alt="Image 10" class="selectable-image">
+                <img src="images/icons/Mariam.jpg" alt="Image 11" class="selectable-image">
                 <!-- Add more images as needed -->
             </div>
         </div>
