@@ -21,7 +21,7 @@ include 'db_config.php';
             <img id="round-box-img" src="images/add-icon.png" alt="Image Description">
         </div>
         <div class="rectangle-box" contenteditable="true" id="text-box">
-            Meetempo
+            New Discussion
             <div class="check-button" id="check-button"  contenteditable="false">‎</div>
         </div>
     </div>
